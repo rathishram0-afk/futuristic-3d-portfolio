@@ -13,8 +13,8 @@ function Navbar() {
   const [active, setActive] =
     useState("home");
 
-  const isMobile =
-    window.innerWidth < 768;
+  const [menuOpen, setMenuOpen] =
+    useState(false);
 
   useEffect(() => {
 
@@ -25,8 +25,7 @@ function Navbar() {
 
       sections.forEach((section) => {
 
-        const top =
-          window.scrollY;
+        const top = window.scrollY;
 
         const offset =
           section.offsetTop - 200;
@@ -63,6 +62,9 @@ function Navbar() {
 
   }, []);
 
+  const isMobile =
+    window.innerWidth < 768;
+
   return (
 
     <nav
@@ -83,19 +85,21 @@ function Navbar() {
 
         padding:
           isMobile
-            ? "18px 20px"
+            ? "18px 22px"
             : "22px 40px",
 
         display: "flex",
 
-        justifyContent: "space-between",
+        justifyContent:
+          "space-between",
 
         alignItems: "center",
 
         background:
           "rgba(5,8,22,0.72)",
 
-        backdropFilter: "blur(14px)",
+        backdropFilter:
+          "blur(14px)",
 
         border:
           "1px solid rgba(255,255,255,0.08)",
@@ -104,23 +108,17 @@ function Navbar() {
 
         boxShadow:
           "0 0 30px rgba(0,255,255,0.06)",
-
-        flexWrap: "wrap",
-
-        gap: "15px",
       }}
     >
 
       {/* LOGO */}
       <h1
-        className="glow"
-
         style={{
           color: "white",
 
           fontSize:
             isMobile
-              ? "26px"
+              ? "28px"
               : "36px",
 
           fontWeight: "900",
@@ -134,90 +132,172 @@ function Navbar() {
         Rathish
       </h1>
 
-      {/* MENU */}
-      <div
-        style={{
-          display: "flex",
+      {/* MOBILE MENU BUTTON */}
+      {isMobile && (
 
-          gap:
-            isMobile
-              ? "20px"
-              : "45px",
+        <div
+          onClick={() =>
+            setMenuOpen(!menuOpen)
+          }
 
-          alignItems: "center",
+          style={{
+            fontSize: "32px",
 
-          justifyContent: "center",
+            color: "white",
 
-          flexWrap: "wrap",
-        }}
-      >
+            cursor: "pointer",
+          }}
+        >
+          ☰
+        </div>
 
-        {navItems.map((item, index) => (
+      )}
 
-          <a
-            key={index}
+      {/* DESKTOP MENU */}
+      {!isMobile && (
 
-            href={`#${item}`}
+        <div
+          style={{
+            display: "flex",
 
-            style={{
-              color:
-                active === item
-                  ? "#00ffff"
-                  : "white",
+            gap: "45px",
 
-              textDecoration: "none",
+            alignItems: "center",
+          }}
+        >
 
-              fontSize:
-                isMobile
-                  ? "16px"
-                  : "20px",
+          {navItems.map((item, index) => (
 
-              fontWeight: "700",
+            <a
+              key={index}
 
-              position: "relative",
+              href={`#${item}`}
 
-              transition: "0.3s ease",
+              style={{
+                color:
+                  active === item
+                    ? "#00ffff"
+                    : "white",
 
-              textShadow:
-                active === item
-                  ? "0 0 18px rgba(0,255,255,0.8)"
-                  : "none",
-            }}
-          >
-            {item.charAt(0).toUpperCase() +
-              item.slice(1)}
+                textDecoration: "none",
 
-            {active === item && (
+                fontSize: "20px",
 
-              <div
-                style={{
-                  position: "absolute",
+                fontWeight: "700",
 
-                  bottom: "-10px",
+                position: "relative",
 
-                  left: 0,
+                transition:
+                  "0.3s ease",
 
-                  width: "100%",
+                textShadow:
+                  active === item
+                    ? "0 0 18px rgba(0,255,255,0.8)"
+                    : "none",
+              }}
+            >
+              {item.charAt(0).toUpperCase() +
+                item.slice(1)}
 
-                  height: "3px",
+              {active === item && (
 
-                  borderRadius: "20px",
+                <div
+                  style={{
+                    position:
+                      "absolute",
 
-                  background:
-                    "#00ffff",
+                    bottom: "-10px",
 
-                  boxShadow:
-                    "0 0 12px #00ffff",
-                }}
-              />
+                    left: 0,
 
-            )}
+                    width: "100%",
 
-          </a>
+                    height: "3px",
 
-        ))}
+                    borderRadius:
+                      "20px",
 
-      </div>
+                    background:
+                      "#00ffff",
+
+                    boxShadow:
+                      "0 0 12px #00ffff",
+                  }}
+                />
+
+              )}
+
+            </a>
+
+          ))}
+
+        </div>
+
+      )}
+
+      {/* MOBILE DROPDOWN */}
+      {isMobile && menuOpen && (
+
+        <div
+          style={{
+            position: "absolute",
+
+            top: "85px",
+
+            left: "0",
+
+            width: "100%",
+
+            background:
+              "rgba(5,8,22,0.95)",
+
+            borderRadius: "20px",
+
+            padding: "25px",
+
+            display: "flex",
+
+            flexDirection: "column",
+
+            gap: "25px",
+
+            textAlign: "center",
+          }}
+        >
+
+          {navItems.map((item, index) => (
+
+            <a
+              key={index}
+
+              href={`#${item}`}
+
+              onClick={() =>
+                setMenuOpen(false)
+              }
+
+              style={{
+                color:
+                  active === item
+                    ? "#00ffff"
+                    : "white",
+
+                textDecoration: "none",
+
+                fontSize: "22px",
+
+                fontWeight: "700",
+              }}
+            >
+              {item.charAt(0).toUpperCase() +
+                item.slice(1)}
+            </a>
+
+          ))}
+
+        </div>
+
+      )}
 
     </nav>
 

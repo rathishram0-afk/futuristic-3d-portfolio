@@ -17,9 +17,6 @@ function Hero() {
 
   const cardRef = useRef(null);
 
-  const isMobile =
-    window.innerWidth < 768;
-
   useEffect(() => {
 
     let currentText = roles[index];
@@ -75,10 +72,10 @@ function Hero() {
 
   ];
 
-  /* PREMIUM 3D + LIGHT EFFECT */
+  /* 3D EFFECT */
   const handleMouseMove = (e) => {
 
-    if (isMobile) return;
+    if (window.innerWidth < 768) return;
 
     const card = cardRef.current;
 
@@ -131,7 +128,7 @@ function Hero() {
       id="home"
 
       style={{
-        minHeight: "100vh",
+        minHeight: "120vh",
 
         scrollMarginTop: "120px",
 
@@ -152,10 +149,9 @@ function Hero() {
 
         fontFamily: "Arial",
 
-        padding:
-          isMobile
-            ? "120px 12px 40px"
-            : "140px 20px 60px",
+        padding: window.innerWidth < 768
+          ? "170px 15px 80px"
+          : "180px 20px 120px",
       }}
     >
 
@@ -185,13 +181,9 @@ function Hero() {
         style={{
           position: "absolute",
 
-          width: isMobile
-            ? "250px"
-            : "500px",
+          width: "500px",
 
-          height: isMobile
-            ? "250px"
-            : "500px",
+          height: "500px",
 
           background: "#00ffff",
 
@@ -199,7 +191,7 @@ function Hero() {
 
           filter: "blur(180px)",
 
-          opacity: "0.15",
+          opacity: "0.25",
 
           top: "-120px",
 
@@ -212,13 +204,9 @@ function Hero() {
         style={{
           position: "absolute",
 
-          width: isMobile
-            ? "220px"
-            : "400px",
+          width: "400px",
 
-          height: isMobile
-            ? "220px"
-            : "400px",
+          height: "400px",
 
           background: "#8b5cf6",
 
@@ -226,7 +214,7 @@ function Hero() {
 
           filter: "blur(170px)",
 
-          opacity: "0.15",
+          opacity: "0.25",
 
           bottom: "-120px",
 
@@ -243,7 +231,7 @@ function Hero() {
 
           width: "82%",
 
-          maxWidth: "1280px",
+          maxWidth: "1400px",
 
           height: "82%",
 
@@ -279,16 +267,16 @@ function Hero() {
 
           width: "100%",
 
-          maxWidth: "1250px",
+          maxWidth: "1400px",
 
           minHeight:
-            isMobile
-              ? "700px"
+            window.innerWidth < 768
+              ? "auto"
               : "950px",
 
           padding:
-            isMobile
-              ? "80px 20px 70px"
+            window.innerWidth < 768
+              ? "70px 20px"
               : "120px 45px 140px",
 
           borderRadius: "40px",
@@ -308,6 +296,9 @@ function Hero() {
 
           transition:
             "transform 0.15s ease, background 0.2s ease",
+
+          animation:
+            "floatCard 6s ease-in-out infinite",
         }}
       >
 
@@ -317,7 +308,7 @@ function Hero() {
             color: "#00ffff",
 
             letterSpacing:
-              isMobile
+              window.innerWidth < 768
                 ? "4px"
                 : "8px",
 
@@ -328,8 +319,8 @@ function Hero() {
             marginBottom: "25px",
 
             fontSize:
-              isMobile
-                ? "11px"
+              window.innerWidth < 768
+                ? "12px"
                 : "15px",
           }}
         >
@@ -342,7 +333,7 @@ function Hero() {
 
           style={{
             fontSize:
-              isMobile
+              window.innerWidth < 768
                 ? "70px"
                 : "clamp(90px,14vw,180px)",
 
@@ -350,7 +341,9 @@ function Hero() {
 
             lineHeight: "0.9",
 
-            marginBottom: "35px",
+            marginBottom: "50px",
+
+            letterSpacing: "-4px",
 
             textShadow:
               "0 0 40px rgba(0,255,255,0.35)",
@@ -372,11 +365,11 @@ function Hero() {
         <h2
           style={{
             fontSize:
-              isMobile
-                ? "34px"
+              window.innerWidth < 768
+                ? "28px"
                 : "clamp(28px,4vw,50px)",
 
-            marginBottom: "55px",
+            marginBottom: "70px",
 
             color: "#ffffff",
 
@@ -388,9 +381,6 @@ function Hero() {
               "0 0 20px rgba(0,255,255,0.4)",
 
             letterSpacing: "1px",
-
-            animation:
-              "textGlow 2s ease-in-out infinite",
           }}
         >
           {text}
@@ -418,9 +408,7 @@ function Hero() {
 
             justifyContent: "center",
 
-            gap: isMobile
-              ? "14px"
-              : "25px",
+            gap: "25px",
 
             flexWrap: "wrap",
           }}
@@ -450,8 +438,8 @@ function Hero() {
             color: "#94a3b8",
 
             fontSize:
-              isMobile
-                ? "14px"
+              window.innerWidth < 768
+                ? "15px"
                 : "18px",
 
             letterSpacing: "1px",
