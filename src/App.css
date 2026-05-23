@@ -1,0 +1,305 @@
+/* ========================= */
+/* GLOBAL RESET */
+/* ========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #050816;
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ========================= */
+/* PREMIUM SCROLLBAR */
+/* ========================= */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050816;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    #00ffff,
+    #8b5cf6
+  );
+
+  border-radius: 20px;
+
+  box-shadow: 0 0 15px #00ffff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    to bottom,
+    #67e8f9,
+    #a78bfa
+  );
+}
+
+/* ========================= */
+/* GLOW TEXT */
+/* ========================= */
+
+.hero-glow {
+  text-shadow:
+    0 0 10px rgba(255,255,255,0.6),
+    0 0 25px rgba(0,255,255,0.5),
+    0 0 50px rgba(0,255,255,0.35);
+}
+
+/* ========================= */
+/* GLASS CARD */
+/* ========================= */
+
+.glass-card {
+  background: rgba(255,255,255,0.03);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 0 30px rgba(0,255,255,0.08);
+
+  transition: 0.4s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 0 35px rgba(0,255,255,0.16);
+}
+
+/* ========================= */
+/* GLOW BUTTON */
+/* ========================= */
+
+.glow-btn {
+  transition: 0.35s ease;
+}
+
+.glow-btn:hover {
+  transform: translateY(-4px) scale(1.03);
+
+  box-shadow:
+    0 0 30px rgba(0,255,255,0.35);
+}
+
+/* ========================= */
+/* NAVBAR LINKS */
+/* ========================= */
+
+.nav-link {
+  position: relative;
+
+  transition: 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #00ffff;
+}
+
+.nav-link::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -8px;
+
+  width: 0%;
+
+  height: 3px;
+
+  border-radius: 20px;
+
+  background: linear-gradient(
+    90deg,
+    #00ffff,
+    #8b5cf6
+  );
+
+  box-shadow:
+    0 0 12px #00ffff;
+
+  transition: 0.35s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ========================= */
+/* FLOATING ANIMATION */
+/* ========================= */
+
+@keyframes float {
+
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* ========================= */
+/* ROTATING GLOW */
+/* ========================= */
+
+@keyframes rotateGlow {
+
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate-glow {
+  animation: rotateGlow 10s linear infinite;
+}
+
+/* ========================= */
+/* FADE IN */
+/* ========================= */
+
+@keyframes fadeIn {
+
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+/* ========================= */
+/* PULSE GLOW */
+/* ========================= */
+
+@keyframes pulseGlow {
+
+  0% {
+    box-shadow:
+      0 0 10px rgba(0,255,255,0.2);
+  }
+
+  50% {
+    box-shadow:
+      0 0 30px rgba(0,255,255,0.5);
+  }
+
+  100% {
+    box-shadow:
+      0 0 10px rgba(0,255,255,0.2);
+  }
+}
+
+.pulse-glow {
+  animation: pulseGlow 2.5s infinite;
+}
+
+/* ========================= */
+/* SHOOTING STAR */
+/* ========================= */
+
+@keyframes shooting {
+
+  0% {
+    transform:
+      translateX(0px)
+      translateY(0px)
+      rotate(45deg);
+
+    opacity: 1;
+  }
+
+  100% {
+    transform:
+      translateX(500px)
+      translateY(500px)
+      rotate(45deg);
+
+    opacity: 0;
+  }
+}
+
+.shooting-star {
+  position: absolute;
+
+  width: 140px;
+
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    #00ffff,
+    transparent
+  );
+
+  box-shadow:
+    0 0 15px #00ffff;
+
+  animation: shooting 3s linear infinite;
+}
+
+/* ========================= */
+/* PREMIUM INPUTS */
+/* ========================= */
+
+input,
+textarea {
+  transition: 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  border: 1px solid #00ffff !important;
+
+  box-shadow:
+    0 0 20px rgba(0,255,255,0.2);
+}
+
+/* ========================= */
+/* PREMIUM SELECTION */
+/* ========================= */
+
+::selection {
+  background: #00ffff;
+  color: #050816;
+}
