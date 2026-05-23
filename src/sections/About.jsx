@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 
+import profile from "../assets/rathish.jpg";
+
 function About() {
 
   const skills = [
@@ -256,18 +258,20 @@ function About() {
           <motion.div
 
             whileHover={{
-              rotate: 3,
-              scale: 1.03,
+              rotate: 2,
+              scale: 1.05,
             }}
 
             className="glass-card float"
 
             style={{
-              width: "300px",
+              width: "340px",
 
-              height: "300px",
+              height: "340px",
 
               borderRadius: "35px",
+
+              overflow: "hidden",
 
               background:
                 "linear-gradient(145deg,#0f172a,#111827)",
@@ -281,17 +285,29 @@ function About() {
 
               alignItems: "center",
 
-              fontSize: "120px",
-
               boxShadow:
-                "0 0 35px rgba(0,255,255,0.15)",
+                "0 0 40px rgba(0,255,255,0.25)",
 
               transform: "rotate(-3deg)",
 
               transition: "0.4s ease",
             }}
           >
-            👨‍💻
+
+            <img
+              src={profile}
+
+              alt="Rathish"
+
+              style={{
+                width: "100%",
+
+                height: "100%",
+
+                objectFit: "cover",
+              }}
+            />
+
           </motion.div>
 
         </div>
