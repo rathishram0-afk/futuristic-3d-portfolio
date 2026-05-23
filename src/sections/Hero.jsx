@@ -1,9 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 
 import FloatingIcons from "../components/FloatingIcons";
-
 import Stats from "../components/Stats";
-
 import MagneticButton from "../components/MagneticButton";
 
 function Hero() {
@@ -15,10 +13,12 @@ function Hero() {
   ];
 
   const [text, setText] = useState("");
-
   const [index, setIndex] = useState(0);
 
   const cardRef = useRef(null);
+
+  const isMobile =
+    window.innerWidth < 768;
 
   useEffect(() => {
 
@@ -77,6 +77,8 @@ function Hero() {
 
   /* PREMIUM 3D + LIGHT EFFECT */
   const handleMouseMove = (e) => {
+
+    if (isMobile) return;
 
     const card = cardRef.current;
 
@@ -150,7 +152,10 @@ function Hero() {
 
         fontFamily: "Arial",
 
-        padding: "140px 20px 60px",
+        padding:
+          isMobile
+            ? "120px 12px 40px"
+            : "140px 20px 60px",
       }}
     >
 
@@ -180,9 +185,13 @@ function Hero() {
         style={{
           position: "absolute",
 
-          width: "500px",
+          width: isMobile
+            ? "250px"
+            : "500px",
 
-          height: "500px",
+          height: isMobile
+            ? "250px"
+            : "500px",
 
           background: "#00ffff",
 
@@ -203,9 +212,13 @@ function Hero() {
         style={{
           position: "absolute",
 
-          width: "400px",
+          width: isMobile
+            ? "220px"
+            : "400px",
 
-          height: "400px",
+          height: isMobile
+            ? "220px"
+            : "400px",
 
           background: "#8b5cf6",
 
@@ -268,9 +281,15 @@ function Hero() {
 
           maxWidth: "1250px",
 
-          minHeight: "950px",
+          minHeight:
+            isMobile
+              ? "700px"
+              : "950px",
 
-          padding: "120px 45px 140px",
+          padding:
+            isMobile
+              ? "80px 20px 70px"
+              : "120px 45px 140px",
 
           borderRadius: "40px",
 
@@ -297,7 +316,10 @@ function Hero() {
           style={{
             color: "#00ffff",
 
-            letterSpacing: "8px",
+            letterSpacing:
+              isMobile
+                ? "4px"
+                : "8px",
 
             textTransform: "uppercase",
 
@@ -305,7 +327,10 @@ function Hero() {
 
             marginBottom: "25px",
 
-            fontSize: "15px",
+            fontSize:
+              isMobile
+                ? "11px"
+                : "15px",
           }}
         >
           WELCOME TO MY PORTFOLIO
@@ -316,7 +341,10 @@ function Hero() {
           className="hero-glow"
 
           style={{
-            fontSize: "clamp(90px,14vw,180px)",
+            fontSize:
+              isMobile
+                ? "70px"
+                : "clamp(90px,14vw,180px)",
 
             fontWeight: "900",
 
@@ -343,7 +371,10 @@ function Hero() {
         {/* TYPING TEXT */}
         <h2
           style={{
-            fontSize: "clamp(28px,4vw,50px)",
+            fontSize:
+              isMobile
+                ? "34px"
+                : "clamp(28px,4vw,50px)",
 
             marginBottom: "55px",
 
@@ -387,7 +418,9 @@ function Hero() {
 
             justifyContent: "center",
 
-            gap: "25px",
+            gap: isMobile
+              ? "14px"
+              : "25px",
 
             flexWrap: "wrap",
           }}
@@ -397,7 +430,6 @@ function Hero() {
 
             <MagneticButton
               key={index}
-
               href={item.link}
             >
               {item.name}
@@ -417,7 +449,10 @@ function Hero() {
 
             color: "#94a3b8",
 
-            fontSize: "18px",
+            fontSize:
+              isMobile
+                ? "14px"
+                : "18px",
 
             letterSpacing: "1px",
           }}

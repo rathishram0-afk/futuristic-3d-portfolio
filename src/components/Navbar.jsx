@@ -13,6 +13,9 @@ function Navbar() {
   const [active, setActive] =
     useState("home");
 
+  const isMobile =
+    window.innerWidth < 768;
+
   useEffect(() => {
 
     const handleScroll = () => {
@@ -22,7 +25,8 @@ function Navbar() {
 
       sections.forEach((section) => {
 
-        const top = window.scrollY;
+        const top =
+          window.scrollY;
 
         const offset =
           section.offsetTop - 200;
@@ -64,18 +68,22 @@ function Navbar() {
     <nav
       style={{
         position: "fixed",
+
         top: "20px",
+
         left: "50%",
+
         transform: "translateX(-50%)",
 
         width: "92%",
+
         maxWidth: "1350px",
 
         zIndex: "999",
 
         padding:
-          window.innerWidth < 768
-            ? "16px 20px"
+          isMobile
+            ? "18px 20px"
             : "22px 40px",
 
         display: "flex",
@@ -96,6 +104,10 @@ function Navbar() {
 
         boxShadow:
           "0 0 30px rgba(0,255,255,0.06)",
+
+        flexWrap: "wrap",
+
+        gap: "15px",
       }}
     >
 
@@ -107,8 +119,8 @@ function Navbar() {
           color: "white",
 
           fontSize:
-            window.innerWidth < 768
-              ? "22px"
+            isMobile
+              ? "26px"
               : "36px",
 
           fontWeight: "900",
@@ -128,15 +140,15 @@ function Navbar() {
           display: "flex",
 
           gap:
-            window.innerWidth < 768
-              ? "18px"
+            isMobile
+              ? "20px"
               : "45px",
 
           alignItems: "center",
 
-          flexWrap: "wrap",
-
           justifyContent: "center",
+
+          flexWrap: "wrap",
         }}
       >
 
@@ -156,8 +168,8 @@ function Navbar() {
               textDecoration: "none",
 
               fontSize:
-                window.innerWidth < 768
-                  ? "14px"
+                isMobile
+                  ? "16px"
                   : "20px",
 
               fontWeight: "700",
