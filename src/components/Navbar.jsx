@@ -22,8 +22,7 @@ function Navbar() {
 
       sections.forEach((section) => {
 
-        const top =
-          window.scrollY;
+        const top = window.scrollY;
 
         const offset =
           section.offsetTop - 200;
@@ -65,20 +64,19 @@ function Navbar() {
     <nav
       style={{
         position: "fixed",
-
         top: "20px",
-
         left: "50%",
-
         transform: "translateX(-50%)",
 
         width: "92%",
-
         maxWidth: "1350px",
 
         zIndex: "999",
 
-        padding: "22px 40px",
+        padding:
+          window.innerWidth < 768
+            ? "16px 20px"
+            : "22px 40px",
 
         display: "flex",
 
@@ -108,7 +106,10 @@ function Navbar() {
         style={{
           color: "white",
 
-          fontSize: "36px",
+          fontSize:
+            window.innerWidth < 768
+              ? "22px"
+              : "36px",
 
           fontWeight: "900",
 
@@ -126,9 +127,16 @@ function Navbar() {
         style={{
           display: "flex",
 
-          gap: "45px",
+          gap:
+            window.innerWidth < 768
+              ? "18px"
+              : "45px",
 
           alignItems: "center",
+
+          flexWrap: "wrap",
+
+          justifyContent: "center",
         }}
       >
 
@@ -147,7 +155,10 @@ function Navbar() {
 
               textDecoration: "none",
 
-              fontSize: "20px",
+              fontSize:
+                window.innerWidth < 768
+                  ? "14px"
+                  : "20px",
 
               fontWeight: "700",
 
